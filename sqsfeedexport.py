@@ -30,6 +30,7 @@ class SQSFeedStorage(BlockingFeedStorage):
         from scrapy.conf import settings
         u = urlparse(uri)
         self.queue_name = u.path.rsplit('/', 1)[-1]
+        self.region_name = settings['AWS_DEFAULT_REGION']
         self.access_key = settings['AWS_ACCESS_KEY_ID']
         self.secret_key = settings['AWS_SECRET_ACCESS_KEY']
         self.deck = deque()
@@ -42,7 +43,8 @@ class SQSFeedStorage(BlockingFeedStorage):
         self.sqs = boto3.resource(
             'sqs',
             aws_access_key_id=self.access_key,
-            aws_secret_access_key=self.secret_key
+            aws_secret_access_key=self.secret_key,
+            region_name=self.region_name
         )
         self.queue = self.sqs.get_queue_by_name(QueueName=self.queue_name)
 

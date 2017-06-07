@@ -110,7 +110,7 @@ def test_sqsfeedstorage_basic_setup():
 
 def test_sqsfeedstorage_and_sqsexporter():
     with mock_sqs():
-        sqs = boto3.resource('sqs')
+        sqs = boto3.resource('sqs', region_name='eu-central-1')
         queue = sqs.create_queue(QueueName='bar')
 
         storage = sqsfeedexport.SQSFeedStorage('https://example.com/0123456789/bar')
