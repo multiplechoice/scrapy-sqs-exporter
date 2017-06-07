@@ -29,7 +29,7 @@ class SQSFeedStorage(BlockingFeedStorage):
     def __init__(self, uri):
         from scrapy.conf import settings
         u = urlparse(uri)
-        self.queue_name = u.path.rsplit('/', 1)[-1]
+        self.queue_name = u.netloc
         self.region_name = settings['AWS_DEFAULT_REGION']
         self.access_key = settings['AWS_ACCESS_KEY_ID']
         self.secret_key = settings['AWS_SECRET_ACCESS_KEY']

@@ -102,7 +102,7 @@ def test_grouper_batching():
 
 
 def test_sqsfeedstorage_basic_setup():
-    storage = sqsfeedexport.SQSFeedStorage('https://example.com/0123456789/foo')
+    storage = sqsfeedexport.SQSFeedStorage('sqs://foo')
     assert storage.queue_name == 'foo'
     assert isinstance(storage.open(), deque)
     verifyObject(IFeedStorage, storage)
@@ -113,7 +113,7 @@ def test_sqsfeedstorage_and_sqsexporter():
         sqs = boto3.resource('sqs', region_name='eu-central-1')
         queue = sqs.create_queue(QueueName='bar')
 
-        storage = sqsfeedexport.SQSFeedStorage('https://example.com/0123456789/bar')
+        storage = sqsfeedexport.SQSFeedStorage('sqs://bar')
         assert storage.queue_name == 'bar'
         deck = storage.open()
         exporter = sqsfeedexport.SQSExporter(deck)
