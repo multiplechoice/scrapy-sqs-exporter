@@ -1,4 +1,4 @@
-|Build Status| |Coveralls Status|
+|Build Status| |Coveralls Status| |Requirements Status|
 
 scrapy-sqs-exporter
 ===================
@@ -35,7 +35,9 @@ accumulating exporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
 .. |Build Status| image:: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter.svg?branch=master
-   :target: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter
+  :target: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter
 .. |Coveralls Status| image:: https://coveralls.io/repos/github/multiplechoice/scrapy-sqs-exporter/badge.svg?branch=master
-   :target: https://coveralls.io/github/multiplechoice/scrapy-sqs-exporter?branch=master
-
+  :target: https://coveralls.io/github/multiplechoice/scrapy-sqs-exporter?branch=master
+.. |Requirements Status| image:: https://requires.io/github/multiplechoice/scrapy-sqs-exporter/requirements.svg?branch=master
+  :target: https://requires.io/github/multiplechoice/scrapy-sqs-exporter/requirements/?branch=master
+  :alt: Requirements Status
