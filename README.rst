@@ -38,9 +38,9 @@ is the region to default to for the SQS instance. ``FEED_URI`` is the name of th
   FEED_URI=sqs://bar
   FEED_FORMAT=sqs
 
- would refer to a queue name ``bar`` in the `us-east-1`` region.
+would refer to a queue name ``bar`` in the `us-east-1`` region.
 
- Finally, the ``FEED_FORMAT`` option makes the Scrapy spiders use the SQSExporter class.
+Finally, the ``FEED_FORMAT`` option makes the Scrapy spiders use the SQSExporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
 .. |Build Status| image:: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter.svg?branch=master
