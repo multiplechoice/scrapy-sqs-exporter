@@ -17,8 +17,8 @@ sections of the settings file::
     'sqs+https': 'sqsfeedexport.SQSFeedStorage'
   }
 
-The `FEED_STORAGES` section uses a URL prefixed with `sqs+https` so that any other storage engines that
-might be using a `https://` URI can still function.
+The ``FEED_STORAGES`` section uses a URL prefixed with ``sqs+https`` so that any other storage engines that
+might be using a ``https://`` URI can still function.
 
 In the environment we also need to define four keys::
 
@@ -27,8 +27,8 @@ In the environment we also need to define four keys::
   FEED_URI=sqs+https://sqs.eu-central-1.amazonaws.com/1234567890/foo
   FEED_FORMAT=sqs
 
-The `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are the AWS credentials to be used, `FEED_URI` is the
-address of the AWS SQS instance being used and the `FEED_FORMAT` option makes the Scrapy spiders use our
+The ``AWS_ACCESS_KEY_ID`` and ``AWS_SECRET_ACCESS_KEY`` are the AWS credentials to be used, ``FEED_URI`` is the
+address of the AWS SQS instance being used and the ``FEED_FORMAT`` option makes the Scrapy spiders use our
 accumulating exporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
