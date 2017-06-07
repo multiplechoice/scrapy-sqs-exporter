@@ -1,3 +1,10 @@
+from collections import deque
+
+import boto3
+from moto import mock_sqs
+from scrapy.extensions.feedexport import IFeedStorage
+from zope.interface.verify import verifyObject
+
 import sqsfeedexport
 
 examples = [
@@ -92,3 +99,38 @@ def test_grouper_batching():
     )
     for batch, expected in zip(sqsfeedexport.grouper(examples, 5), batches_expected):
         assert batch == expected
+
+
+def test_sqsfeedstorage_basic_setup():
+    storage = sqsfeedexport.SQSFeedStorage('https://example.com/0123456789/foo')
+    assert storage.queue_name == 'foo'
+    assert isinstance(storage.open(), deque)
+    verifyObject(IFeedStorage, storage)
+
+
+def test_sqsfeedstorage_and_sqsexporter():
+    with mock_sqs():
+        sqs = boto3.resource('sqs')
+        queue = sqs.create_queue(QueueName='bar')
+
+        storage = sqsfeedexport.SQSFeedStorage('https://example.com/0123456789/bar')
+        assert storage.queue_name == 'bar'
+        deck = storage.open()
+        exporter = sqsfeedexport.SQSExporter(deck)
+
+        # do the `scrapy.extensions.feedexport.FeedExporter` song and dance
+        exporter.start_exporting()
+        for item in examples:
+            exporter.export_item(item)
+        exporter.finish_exporting()
+        assert len(deck) == 6
+        # call the private method directly to avoid the deferToThread call
+        storage._store_in_thread(deck)
+
+        # now check what we've got
+        messages = queue.receive_messages(MaxNumberOfMessages=10, MessageAttributeNames=['All'])
+        for index in xrange(6):
+            assert messages[index].body == 'ScrapyItem'
+            assert messages[index].message_attributes == \
+                   sqsfeedexport.translate_item_to_message(examples[index])['MessageAttributes']
+        assert len(messages) == 6

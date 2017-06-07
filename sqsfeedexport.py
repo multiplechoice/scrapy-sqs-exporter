@@ -34,7 +34,7 @@ class SQSFeedStorage(BlockingFeedStorage):
         self.secret_key = settings['AWS_SECRET_ACCESS_KEY']
         self.deck = deque()
 
-    def open(self, spider):
+    def open(self, *args, **kwargs):
         return self.deck
 
     def _store_in_thread(self, *args, **kwargs):
@@ -47,7 +47,8 @@ class SQSFeedStorage(BlockingFeedStorage):
         self.queue = self.sqs.get_queue_by_name(QueueName=self.queue_name)
 
         for batch in grouper(self.deck, 10):
-            self.queue.send_messages(Entries=batch)
+            items = filter(lambda x: x is not None, batch)
+            self.queue.send_messages(Entries=items)
 
 
 def translate_item_to_message(item):
