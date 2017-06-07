@@ -1,3 +1,5 @@
+|Build Status| |Coveralls Status|
+
 scrapy-sqs-exporter
 ===================
 
@@ -32,3 +34,8 @@ address of the AWS SQS instance being used and the ``FEED_FORMAT`` option makes 
 accumulating exporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
+.. |Build Status| image:: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter.svg?branch=master
+   :target: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter
+.. |Coveralls Status| image:: https://coveralls.io/repos/github/multiplechoice/scrapy-sqs-exporter/badge.svg?branch=master
+   :target: https://coveralls.io/github/multiplechoice/scrapy-sqs-exporter?branch=master
+
