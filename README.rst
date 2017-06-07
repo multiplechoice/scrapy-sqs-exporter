@@ -22,7 +22,7 @@ sections of the settings file::
 The ``FEED_STORAGES`` section uses a URL prefixed with ``sqs`` to differentiate it from other URI based storage
 options.
 
-In the environment we also need to define four keys::
+In the environment we also need to define some keys::
 
   AWS_DEFAULT_REGION=eu-central-1
   AWS_ACCESS_KEY_ID=...
@@ -38,7 +38,7 @@ is the region to default to for the SQS instance. ``FEED_URI`` is the name of th
   FEED_URI=sqs://bar
   FEED_FORMAT=sqs
 
-would refer to a queue name ``bar`` in the `us-east-1`` region.
+would refer to a queue name ``bar`` in the ``us-east-1`` region.
 
 Finally, the ``FEED_FORMAT`` option makes the Scrapy spiders use the SQSExporter class.
 
