@@ -24,14 +24,15 @@ might be using a ``https://`` URI can still function.
 
 In the environment we also need to define four keys::
 
+  AWS_DEFAULT_REGION=eu-central-1
   AWS_ACCESS_KEY_ID=...
   AWS_SECRET_ACCESS_KEY=...
   FEED_URI=sqs+https://sqs.eu-central-1.amazonaws.com/1234567890/foo
   FEED_FORMAT=sqs
 
-The ``AWS_ACCESS_KEY_ID`` and ``AWS_SECRET_ACCESS_KEY`` are the AWS credentials to be used, ``FEED_URI`` is the
-address of the AWS SQS instance being used and the ``FEED_FORMAT`` option makes the Scrapy spiders use our
-accumulating exporter class.
+The ``AWS_ACCESS_KEY_ID`` and ``AWS_SECRET_ACCESS_KEY`` are the AWS credentials to be used, and ``AWS_DEFAULT_REGION``
+is the region to default to for the SQS instance,``FEED_URI`` is the address of the AWS SQS instance being used and
+the ``FEED_FORMAT`` option makes the Scrapy spiders use our accumulating exporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
 .. |Build Status| image:: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter.svg?branch=master
