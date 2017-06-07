@@ -3,7 +3,7 @@ from setuptools import setup
 with open('requirements.txt') as requirements:
     setup(
         name='scrapy-sqs-exporter',
-        version='1.0.2',
+        version='1.0.3',
         py_modules=['sqsfeedexport'],
         install_requires=requirements.read().splitlines(),
         url='https://github.com/multiplechoice/scrapy-sqs-exporter',
