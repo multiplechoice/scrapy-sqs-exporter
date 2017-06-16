@@ -57,6 +57,14 @@ examples = [
         "url": "https://alfred.is/starf/11081"
     }]
 
+example_with_nones = {
+    "url": "http://www.mbl.is/atvinna/3612/",
+    "company": None,
+    "title": "Lausar st\u00f6\u00f0ur  vi\u00f0 Finnbogasta\u00f0ask\u00f3la",
+    "deadline": None,
+    "posted": "2017-05-12"
+}
+
 
 def test_batch_send_entry_translation(monkeypatch):
     def fake_uuid():
@@ -89,6 +97,23 @@ def test_empty_scrapy_response(monkeypatch):
     assert sqsfeedexport.translate_item_to_message({}) == {
         'Id': '12345-67890',
         'MessageBody': 'ScrapyItem'
+    }
+
+
+def test_no_nonetypes(monkeypatch):
+    def fake_uuid():
+        return '12345-67890'
+
+    monkeypatch.setattr('sqsfeedexport.uuid4', fake_uuid)
+    assert sqsfeedexport.translate_item_to_message(example_with_nones) == {
+        'Id': '12345-67890',
+        'MessageBody': 'ScrapyItem',
+        'MessageAttributes': {
+            'posted': {'StringValue': '2017-05-12', 'DataType': 'String'},
+            'title': {'StringValue': 'Lausar st\u00f6\u00f0ur  vi\u00f0 Finnbogasta\u00f0ask\u00f3la',
+                      'DataType': 'String'},
+            'url': {'StringValue': 'http://www.mbl.is/atvinna/3612/', 'DataType': 'String'}
+        }
     }
 
 

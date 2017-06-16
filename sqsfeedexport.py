@@ -71,6 +71,8 @@ def translate_item_to_message(item):
     """
     message = {'Id': str(uuid4()), 'MessageBody': 'ScrapyItem', 'MessageAttributes': {}}
     for key, value in item.iteritems():
+        if value is None:
+            continue
         message['MessageAttributes'][key] = {'StringValue': value, 'DataType': 'String'}
 
     if not message['MessageAttributes']:
