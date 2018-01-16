@@ -6,6 +6,7 @@ from scrapy.extensions.feedexport import IFeedStorage
 from zope.interface.verify import verifyObject
 
 import sqsfeedexport
+from six.moves import range
 
 examples = [
     {
