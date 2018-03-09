@@ -1,9 +1,11 @@
 from collections import deque
-from itertools import izip_longest
 from uuid import uuid4
 
+import six
 from scrapy.exporters import BaseItemExporter
 from scrapy.extensions.feedexport import BlockingFeedStorage
+
+from six.moves import filter, zip_longest
 from six.moves.urllib.parse import urlparse
 
 
@@ -49,7 +51,7 @@ class SQSFeedStorage(BlockingFeedStorage):
         self.queue = self.sqs.get_queue_by_name(QueueName=self.queue_name)
 
         for batch in grouper(self.deck, 10):
-            items = filter(lambda x: x is not None, batch)
+            items = list(filter(lambda x: x is not None, batch))
             self.queue.send_messages(Entries=items)
 
 
@@ -69,11 +71,18 @@ def translate_item_to_message(item):
         https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessageBatchRequestEntry.html
 
     """
-    message = {'Id': str(uuid4()), 'MessageBody': 'ScrapyItem', 'MessageAttributes': {}}
-    for key, value in item.iteritems():
+    message = {
+        'Id': str(uuid4()),
+        'MessageBody': 'ScrapyItem',
+        'MessageAttributes': {}
+    }
+    for key, value in six.iteritems(item):
         if value is None:
             continue
-        message['MessageAttributes'][key] = {'StringValue': value, 'DataType': 'String'}
+        message['MessageAttributes'][key] = {
+            'StringValue': value,
+            'DataType': 'String'
+        }
 
     if not message['MessageAttributes']:
         del message['MessageAttributes']
@@ -85,4 +94,4 @@ def grouper(iterable, n, fillvalue=None):
     """Collect data into fixed-length chunks or blocks"""
     # grouper('ABCDEFG', 3, 'x') --> ABC DEF Gxx
     args = [iter(iterable)] * n
-    return izip_longest(fillvalue=fillvalue, *args)
+    return zip_longest(fillvalue=fillvalue, *args)

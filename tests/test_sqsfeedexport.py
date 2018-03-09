@@ -6,6 +6,7 @@ from scrapy.extensions.feedexport import IFeedStorage
 from zope.interface.verify import verifyObject
 
 import sqsfeedexport
+from six.moves import range
 
 examples = [
     {
@@ -154,7 +155,7 @@ def test_sqsfeedstorage_and_sqsexporter():
 
         # now check what we've got
         messages = queue.receive_messages(MaxNumberOfMessages=10, MessageAttributeNames=['All'])
-        for index in xrange(6):
+        for index in range(6):
             assert messages[index].body == 'ScrapyItem'
             assert messages[index].message_attributes == \
                    sqsfeedexport.translate_item_to_message(examples[index])['MessageAttributes']

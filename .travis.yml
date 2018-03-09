@@ -2,14 +2,15 @@ dist: trusty
 language: python
 cache: pip
 python:
-- '2.7'
+  - '2.7'
+  - '3.6'
 install:
-- pip install -r requirements.txt
-- pip install coveralls
+  - pip install -r requirements.txt
+  - pip install coveralls
 script:
-- pytest .
+  - pytest .
 after_success:
-- coveralls
+  - coveralls
 deploy:
   provider: pypi
   skip_upload_docs: true
