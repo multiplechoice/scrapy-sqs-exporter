@@ -29,12 +29,11 @@ class SQSExporter(BaseItemExporter):
 
 class SQSFeedStorage(BlockingFeedStorage):
     def __init__(self, uri):
-        from crawler.settings import settings
         u = urlparse(uri)
         self.queue_name = u.netloc
-        self.region_name = settings['AWS_DEFAULT_REGION']
-        self.access_key = settings['AWS_ACCESS_KEY_ID']
-        self.secret_key = settings['AWS_SECRET_ACCESS_KEY']
+        self.region_name = crawler.settings['AWS_DEFAULT_REGION']
+        self.access_key = crawler.settings['AWS_ACCESS_KEY_ID']
+        self.secret_key = crawler.settings['AWS_SECRET_ACCESS_KEY']
         self.deck = deque()
 
     def open(self, *args, **kwargs):
