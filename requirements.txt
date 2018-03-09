@@ -1,7 +1,7 @@
-boto3==1.4.4
-Scrapy==1.4.0
-six==1.10.0
-pytest==3.1.1
-pytest-cov==2.5.1
-moto==1.0.1
-pytest-env==0.6.0
+boto3
+Scrapy
+six
+pytest
+pytest-cov
+moto
+pytest-env
