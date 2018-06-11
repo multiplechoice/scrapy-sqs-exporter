@@ -8,7 +8,7 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 script:
-  - pytest .
+  - pytest . -W ignore::scrapy.exceptions.ScrapyDeprecationWarning
 after_success:
   - coveralls
 deploy:
