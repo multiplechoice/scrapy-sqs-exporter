@@ -20,3 +20,4 @@ deploy:
   distributions: "sdist bdist_wheel"
   on:
     repo: multiplechoice/scrapy-sqs-exporter
+    python: '2.7'
