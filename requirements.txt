@@ -1,6 +1,6 @@
 boto3==1.7.40
 Scrapy==1.5.0
-six
+six==1.11.0
 pytest
 pytest-cov
 moto
