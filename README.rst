@@ -1,4 +1,4 @@
-|Build Status| |Coveralls Status| |Requirements Status|
+|Build Status| |Coveralls Status| |Updates|
 
 scrapy-sqs-exporter
 ===================
@@ -47,6 +47,6 @@ Finally, the ``FEED_FORMAT`` option makes the Scrapy spiders use the SQSExporter
   :target: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter
 .. |Coveralls Status| image:: https://coveralls.io/repos/github/multiplechoice/scrapy-sqs-exporter/badge.svg?branch=master
   :target: https://coveralls.io/github/multiplechoice/scrapy-sqs-exporter?branch=master
-.. |Requirements Status| image:: https://requires.io/github/multiplechoice/scrapy-sqs-exporter/requirements.svg?branch=master
-  :target: https://requires.io/github/multiplechoice/scrapy-sqs-exporter/requirements/?branch=master
-  :alt: Requirements Status
+.. |Updates| image:: https://pyup.io/repos/github/multiplechoice/scrapy-sqs-exporter/shield.svg
+  :target: https://pyup.io/repos/github/multiplechoice/scrapy-sqs-exporter/
+  :alt: Updates
