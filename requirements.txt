@@ -2,6 +2,6 @@ boto3==1.7.40
 Scrapy==1.5.0
 six==1.11.0
 pytest==3.6.1
-pytest-cov
+pytest-cov==2.5.1
 moto
 pytest-env
