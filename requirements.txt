@@ -1,5 +1,5 @@
 boto3==1.7.62
-Scrapy==1.5.0
+Scrapy==1.5.1
 six==1.11.0
 pytest==3.6.3
 pytest-cov==2.5.1
