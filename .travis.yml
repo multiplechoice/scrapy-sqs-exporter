@@ -4,6 +4,8 @@ cache: pip
 python:
   - '2.7'
   - '3.6'
+before_install:
+  - export BOTO_CONFIG=/dev/null
 install:
   - pip install -r requirements.txt
   - pip install coveralls
