@@ -1,4 +1,4 @@
-|Build Status| |Coveralls Status| |Updates|
+|Actions Status| |Coveralls Status| |Updates|
 
 scrapy-sqs-exporter
 ===================
@@ -43,8 +43,7 @@ would refer to a queue name ``bar`` in the ``us-east-1`` region.
 Finally, the ``FEED_FORMAT`` option makes the Scrapy spiders use the SQSExporter class.
 
 .. _Scrapy: https://github.com/scrapy/scrapy/
-.. |Build Status| image:: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter.svg?branch=master
-  :target: https://travis-ci.org/multiplechoice/scrapy-sqs-exporter
+.. |Actions Status| image:: https://github.com/multiplechoice/scrapy-sqs-exporter/workflows/pytest/badge.svg
 .. |Coveralls Status| image:: https://coveralls.io/repos/github/multiplechoice/scrapy-sqs-exporter/badge.svg?branch=master
   :target: https://coveralls.io/github/multiplechoice/scrapy-sqs-exporter?branch=master
 .. |Updates| image:: https://pyup.io/repos/github/multiplechoice/scrapy-sqs-exporter/shield.svg
