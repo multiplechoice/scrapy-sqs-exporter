@@ -29,7 +29,9 @@ class SQSExporter(BaseItemExporter):
 
 class SQSFeedStorage(BlockingFeedStorage):
     def __init__(self, uri):
-        from scrapy.conf import settings
+        #from scrapy.conf import settings
+        from scrapy.utils.project import get_project_settings
+        settings = get_project_settings()
         u = urlparse(uri)
         self.queue_name = u.netloc
         self.region_name = settings['AWS_DEFAULT_REGION']
