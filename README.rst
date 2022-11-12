@@ -31,7 +31,7 @@ In the environment we also need to define some keys::
   FEED_FORMAT=sqs
 
 The ``AWS_ACCESS_KEY_ID`` and ``AWS_SECRET_ACCESS_KEY`` are the AWS credentials to be used, and ``AWS_DEFAULT_REGION``
-is the region to default to for the SQS instance. ``FEED_URI`` is the name of the AWS SQS instance in the
+is the region to default  for the SQS instance. ``FEED_URI`` is the name of the AWS SQS instance in the
 ``AWS_DEFAULT_REGION`` region for example::
 
   AWS_DEFAULT_REGION=us-east-1
